@@ -17,6 +17,19 @@ public class ExceptionHandler {
     @org.springframework.web.bind.annotation.ExceptionHandler
     public ResponseEntity<Error> handle(Exception exception) {
         log.error("Failed to process request", exception);
-        return ResponseEntity.status(400).body(new Error(exception.getMessage()));
+        return ResponseEntity.status(getHttpStatus(exception)).body(new Error(exception.getMessage()));
+    }
+
+    private static HttpStatus getHttpStatus(Exception exception){
+        if (exception instanceof IntervalNotFoundException){
+            return HttpStatus.NOT_FOUND;
+        }
+        if (exception instanceof WrongIntervalException){
+            return HttpStatus.BAD_REQUEST;
+        }
+        if (exception instanceof WrongKindException){
+            return HttpStatus.BAD_REQUEST;
+        }
+        return HttpStatus.INTERNAL_SERVER_ERROR;
     }
 }
