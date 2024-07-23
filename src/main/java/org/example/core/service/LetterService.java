@@ -33,6 +33,15 @@ public class LetterService extends IntervalService<Letter>{
     }
 
     @Override
+    public List min() {
+        Letter letter = letterRepository.findFirstByOrderByStartingAscEnding().orElse(null);
+        if (letter == null){
+            throw new RuntimeException("Интервал не найден.");
+        }
+        return letterMapper.map(letter);
+    }
+
+    @Override
     public Kinds getKind() {
         return letters;
     }

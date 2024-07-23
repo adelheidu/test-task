@@ -21,4 +21,11 @@ public class LetterMapper {
         }
         return result;
     }
+
+    public List<Character> map(Letter letter){
+        List<Character> result = new ArrayList<>();
+        result.add(letter.getStarting());
+        result.add(letter.getEnding());
+        return result;
+    }
 }
