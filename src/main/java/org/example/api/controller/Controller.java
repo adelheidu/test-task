@@ -18,13 +18,14 @@ import static org.example.api.Paths.MIN;
 @RequiredArgsConstructor
 public class Controller {
     private final ExecuteService executeService;
+
     @PostMapping(MERGE)
-    public void merge(@RequestParam(required = true) Kinds kind, @RequestBody List<List<Object>> intervals){
+    public void merge(@RequestParam(required = true) Kinds kind, @RequestBody List<List<Object>> intervals) {
         executeService.executeMerge(kind, intervals);
     }
 
     @GetMapping(MIN)
-    public List min(@RequestParam(required = true) Kinds kind){
+    public List min(@RequestParam(required = true) Kinds kind) {
         return executeService.executeMin(kind);
     }
 }

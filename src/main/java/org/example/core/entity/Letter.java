@@ -18,7 +18,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Data
-public class Letter implements Interval<Character, Letter>{
+public class Letter implements Interval<Character, Letter> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -27,29 +27,25 @@ public class Letter implements Interval<Character, Letter>{
 
     @Override
     public Character max(Character ending) {
-        if (this.ending >= ending){
+        if (this.ending >= ending) {
             return this.ending;
-        }
-        else return ending;
+        } else return ending;
     }
 
     @Override
     public int compareToMerge(Letter interval) {
-        if (this.getEnding() >= interval.getStarting()){
+        if (this.getEnding() >= interval.getStarting()) {
             return 1;
-        }
-        else return 0;
+        } else return 0;
     }
 
     @Override
     public int compareTo(Letter letter) {
-        if (this.getStarting() > letter.getStarting()){
+        if (this.getStarting() > letter.getStarting()) {
             return 1;
-        }
-        else if (this.getStarting() < letter.getStarting()){
+        } else if (this.getStarting() < letter.getStarting()) {
             return -1;
-        }
-        else {
+        } else {
             return this.getEnding().compareTo(letter.getEnding());
         }
     }

@@ -15,17 +15,18 @@ import static org.example.api.Kinds.digits;
 
 @Service
 @RequiredArgsConstructor
-public class DigitService extends IntervalService<Digit>{
+public class DigitService extends IntervalService<Digit> {
     private final ValidationService validationService;
     private final DigitMapper digitMapper;
     private final DigitRepository digitRepository;
+
     @Override
     public void merge(List<List<Object>> list) {
         validationService.validDigits(list);
         validationService.validator(list);
         List<Digit> digitList = digitMapper.map(list);
         List<Digit> resultList = mergeIntervals(digitList);
-        for (Digit digit : resultList){
+        for (Digit digit : resultList) {
             digitRepository.save(digit);
         }
     }
@@ -33,7 +34,7 @@ public class DigitService extends IntervalService<Digit>{
     @Override
     public List min() {
         Digit digit = digitRepository.findFirstByOrderByStartingAscEnding().orElse(null);
-        if (digit == null){
+        if (digit == null) {
             throw new IntervalNotFoundException("Интервал не найден.");
         }
         return digitMapper.map(digit);

@@ -1,6 +1,5 @@
 package org.example.core.mapper;
 
-import org.example.core.entity.Digit;
 import org.example.core.entity.Letter;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,7 @@ public class LetterMapper {
         return result;
     }
 
-    public List<Character> map(Letter letter){
+    public List<Character> map(Letter letter) {
         List<Character> result = new ArrayList<>();
         result.add(letter.getStarting());
         result.add(letter.getEnding());

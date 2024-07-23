@@ -5,7 +5,8 @@ import lombok.Value;
 @Value
 public class Error {
     String message;
-    public Error(String message){
+
+    public Error(String message) {
         this.message = message;
     }
 }

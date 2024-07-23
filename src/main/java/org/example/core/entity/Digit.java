@@ -18,7 +18,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Data
-public class Digit implements Interval<Integer, Digit>{
+public class Digit implements Interval<Integer, Digit> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -27,10 +27,9 @@ public class Digit implements Interval<Integer, Digit>{
 
     @Override
     public int compareToMerge(Digit interval) {
-        if (this.getEnding() >= interval.getStarting()){
+        if (this.getEnding() >= interval.getStarting()) {
             return 1;
-        }
-        else return 0;
+        } else return 0;
     }
 
     @Override
@@ -40,13 +39,11 @@ public class Digit implements Interval<Integer, Digit>{
 
     @Override
     public int compareTo(Digit digit) {
-        if (this.getStarting() > digit.getStarting()){
+        if (this.getStarting() > digit.getStarting()) {
             return 1;
-        }
-        else if (this.getStarting() < digit.getStarting()){
+        } else if (this.getStarting() < digit.getStarting()) {
             return -1;
-        }
-        else {
+        } else {
             return this.getEnding().compareTo(digit.getEnding());
         }
     }

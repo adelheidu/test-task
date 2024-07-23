@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class ProviderService {
@@ -14,8 +15,8 @@ public class ProviderService {
     private List<IntervalService> intervalServiceList;
 
     public IntervalService getIntervalService(Kinds kind) {
-        for (IntervalService intervalService : intervalServiceList){
-            if (intervalService.getKind() == kind){
+        for (IntervalService intervalService : intervalServiceList) {
+            if (intervalService.getKind() == kind) {
                 return intervalService;
             }
         }
