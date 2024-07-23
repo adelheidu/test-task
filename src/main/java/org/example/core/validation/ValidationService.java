@@ -32,7 +32,7 @@ public class ValidationService {
             Pattern pattern = Pattern.compile("^[a-z]$");
             if (!(pattern.matcher(interval.get(0).toString().toLowerCase()).matches()) ||
                     !(pattern.matcher(interval.get(1).toString().toLowerCase()).matches())) {
-                throw new WrongIntervalException("Допускается только один символ.");
+                throw new WrongIntervalException("Допускается только один символ (a-z).");
             }
             if (interval.get(0).toString().compareTo(interval.get(1).toString()) >= 0) {
                 throw new WrongIntervalException("Интервал указан неверно (левая граница должна быть меньше правой).");

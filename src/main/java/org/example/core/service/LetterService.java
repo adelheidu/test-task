@@ -22,14 +22,11 @@ public class LetterService extends IntervalService<Letter> {
 
     @Override
     public void merge(List<List<Object>> list) {
-        validationService.validLetters(list);
         validationService.validator(list);
+        validationService.validLetters(list);
         List<Letter> letterList = letterMapper.map(list);
         List<Letter> resultList = mergeIntervals(letterList);
-        for (Letter letter : resultList) {
-            letterRepository.save(letter);
-        }
-
+        letterRepository.saveAll(resultList);
     }
 
     @Override

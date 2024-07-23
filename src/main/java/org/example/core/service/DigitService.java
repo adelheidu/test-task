@@ -22,13 +22,11 @@ public class DigitService extends IntervalService<Digit> {
 
     @Override
     public void merge(List<List<Object>> list) {
-        validationService.validDigits(list);
         validationService.validator(list);
+        validationService.validDigits(list);
         List<Digit> digitList = digitMapper.map(list);
         List<Digit> resultList = mergeIntervals(digitList);
-        for (Digit digit : resultList) {
-            digitRepository.save(digit);
-        }
+        digitRepository.saveAll(resultList);
     }
 
     @Override
