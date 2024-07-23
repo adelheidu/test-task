@@ -2,6 +2,7 @@ package org.example.core.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.api.Kinds;
+import org.example.core.exception.WrongKindException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,6 @@ public class ProviderService {
                 return intervalService;
             }
         }
-        throw new RuntimeException("Указан неверный тип.");
+        throw new WrongKindException("Указан неверный тип.");
     }
 }

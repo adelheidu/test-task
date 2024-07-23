@@ -3,6 +3,7 @@ package org.example.core.service;
 import lombok.RequiredArgsConstructor;
 import org.example.api.Kinds;
 import org.example.core.entity.Digit;
+import org.example.core.exception.IntervalNotFoundException;
 import org.example.core.mapper.DigitMapper;
 import org.example.core.repository.DigitRepository;
 import org.example.core.validation.ValidationService;
@@ -33,7 +34,7 @@ public class DigitService extends IntervalService<Digit>{
     public List min() {
         Digit digit = digitRepository.findFirstByOrderByStartingAscEnding().orElse(null);
         if (digit == null){
-            throw new RuntimeException("Интервал не найден.");
+            throw new IntervalNotFoundException("Интервал не найден.");
         }
         return digitMapper.map(digit);
     }

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.api.Kinds;
 import org.example.core.entity.Digit;
 import org.example.core.entity.Letter;
+import org.example.core.exception.IntervalNotFoundException;
 import org.example.core.mapper.LetterMapper;
 import org.example.core.repository.LetterRepository;
 import org.example.core.validation.ValidationService;
@@ -36,7 +37,7 @@ public class LetterService extends IntervalService<Letter>{
     public List min() {
         Letter letter = letterRepository.findFirstByOrderByStartingAscEnding().orElse(null);
         if (letter == null){
-            throw new RuntimeException("Интервал не найден.");
+            throw new IntervalNotFoundException("Интервал не найден.");
         }
         return letterMapper.map(letter);
     }
