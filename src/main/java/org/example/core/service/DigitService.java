@@ -30,6 +30,15 @@ public class DigitService extends IntervalService<Digit>{
     }
 
     @Override
+    public List min() {
+        Digit digit = digitRepository.findFirstByOrderByStartingAscEnding().orElse(null);
+        if (digit == null){
+            throw new RuntimeException("Интервал не найден.");
+        }
+        return digitMapper.map(digit);
+    }
+
+    @Override
     public Kinds getKind() {
         return digits;
     }

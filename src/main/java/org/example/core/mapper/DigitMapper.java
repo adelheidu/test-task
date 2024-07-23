@@ -9,19 +9,6 @@ import java.util.List;
 
 @Component
 public class DigitMapper {
-//    public Digit map(List<Integer> interval) {
-//        return Digit.builder()
-//                .starting(interval.get(0))
-//                .ending(interval.get(1))
-//                .build();
-//    }
-
-    public List<Integer> map(Digit digit) {
-        List<Integer> result = new ArrayList<>();
-        result.set(0, digit.getStarting());
-        result.set(1, digit.getEnding());
-        return result;
-    }
 
     public List<Digit> map(List<List<Object>> list) {
         List<Digit> result = new ArrayList<>();
@@ -33,6 +20,13 @@ public class DigitMapper {
                     .build()
             );
         }
+        return result;
+    }
+
+    public List<Integer> map(Digit digit){
+        List<Integer> result = new ArrayList<>();
+        result.add(digit.getStarting());
+        result.add(digit.getEnding());
         return result;
     }
 

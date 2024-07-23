@@ -29,10 +29,7 @@ public abstract class IntervalService<T extends Interval> {
         return result;
     }
 
-    public List<Object> min() {
-        return null;
-    }
-
+    public abstract List min();
 
     public abstract Kinds getKind();
 }
